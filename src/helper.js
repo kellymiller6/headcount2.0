@@ -1,17 +1,23 @@
-
 export default class DistrictRepository {
+
 constructor(data){
-  // super()
-  this.data = data
+  this.data = this.duplicateCleaner(data)
   }
+
   duplicateCleaner(data){
-    data.reduce((acc, val)=>{
+    return data.reduce((acc, curVal) => {
+      const district = curVal.Location;
+      const year = curVal.TimeFrame;
+      const data = curVal.Data
 
-      if(data[val].location){
-        !acc.Location ? acc['location'] = [[val].]
-
+      if (!acc[district]) {
+       acc[district] = { 'location': district, 'yearlyData': {}};
       }
-      return acc
-    }, {})
+
+      acc[district]['yearlyData'][year] = data;
+      return acc;
+    }, {});
   }
+
+
 }
