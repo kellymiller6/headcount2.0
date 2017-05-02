@@ -24,6 +24,9 @@ constructor(data){
     return this.data[location.toUpperCase()]
   }
 
-
+  findAllMatches(search='') {
+      const keys = Object.keys(this.data).filter( location => location.includes(search.toUpperCase()))
+      return keys;
+    }
 
 }
