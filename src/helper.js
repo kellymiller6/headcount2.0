@@ -18,8 +18,6 @@ convertOrSetData(data){
 
       const data = Math.round(curVal.Data*1000)/1000 || 0
 
-
-
       if (!acc[district]) {
        acc[district.toUpperCase()] = { 'location': district, 'data': {}};
       }
@@ -28,14 +26,8 @@ convertOrSetData(data){
       return acc;
     }, {});
   }
-findByName(location){
-  if(location === ''){
-    return undefined;
-  }else{
-    return this.data[location.toUpperCase()]
-  }
 
-  findByName(location=''){
+    findByName(location=''){
     return this.data[location.toUpperCase()]
   }
 
