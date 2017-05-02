@@ -23,4 +23,11 @@ export default class DistrictRepository {
     return this.data[location.toUpperCase()]
   }
 
+  findAllMatches(searchInput=''){
+    const keys = Object.keys(this.data).filter(district => {
+      return district.includes(searchInput.toUpperCase())
+    })
+    return keys
+  }
+
 }
