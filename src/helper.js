@@ -1,15 +1,8 @@
 export default class DistrictRepository {
 
-constructor(data){
-  this.data = this.duplicateCleaner(data)
+  constructor(data){
+    this.data = this.duplicateCleaner(data)
   }
-
-convertOrSetData(data){
-  if(isNaN(this.data.Data)){
-    this.data.Data === 0;
-  }
-  console.log(this.data.data)
-}
 
   duplicateCleaner(data){
     return data.reduce((acc, curVal) => {
