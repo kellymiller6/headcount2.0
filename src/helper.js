@@ -4,11 +4,11 @@ export default class DistrictRepository {
     this.data = this.duplicateCleaner(data)
   }
 
-
   duplicateCleaner(data){
     return data.reduce((acc, curVal) => {
       const district = curVal.Location;
       const year = curVal.TimeFrame;
+
       const data = Math.round(curVal.Data*1000)/1000 || 0
 
       if (!acc[district]) {
@@ -18,6 +18,12 @@ export default class DistrictRepository {
       acc[district.toUpperCase()]['data'][year] = data;
       return acc;
     }, {});
+  }
+findByName(location){
+  if(location === ''){
+    return undefined;
+  }else{
+    return this.data[location.toUpperCase()]
   }
 
 
