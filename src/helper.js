@@ -19,15 +19,8 @@ export default class DistrictRepository {
       return acc;
     }, {});
   }
-findByName(location){
-  if(location === ''){
-    return undefined;
-  }else{
-    return this.data[location.toUpperCase()]
-  }
 
-
-  findByName(location=''){
+    findByName(location=''){
     return this.data[location.toUpperCase()]
   }
 
