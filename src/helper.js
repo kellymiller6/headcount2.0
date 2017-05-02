@@ -1,7 +1,7 @@
 export default class DistrictRepository {
 
-constructor(data){
-  this.data = this.duplicateCleaner(data)
+  constructor(data){
+    this.data = this.duplicateCleaner(data)
   }
 
   duplicateCleaner(data){
@@ -23,10 +23,5 @@ constructor(data){
   findByName(location=''){
     return this.data[location.toUpperCase()]
   }
-
-  findAllMatches(search='') {
-      const keys = Object.keys(this.data).filter( location => location.includes(search.toUpperCase()))
-      return keys;
-    }
 
 }
