@@ -15,7 +15,10 @@ convertOrSetData(data){
     return data.reduce((acc, curVal) => {
       const district = curVal.Location;
       const year = curVal.TimeFrame;
-      const data = Math.round(curVal.Data * 1000)/1000;
+
+      const data = Math.round(curVal.Data*1000)/1000 || 0
+
+
 
       if (!acc[district]) {
        acc[district.toUpperCase()] = { 'location': district, 'data': {}};
@@ -32,5 +35,8 @@ findByName(location){
     return this.data[location.toUpperCase()]
   }
 
-}
+  findByName(location=''){
+    return this.data[location.toUpperCase()]
+  }
+
 }
