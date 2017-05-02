@@ -8,16 +8,22 @@ constructor(data){
     return data.reduce((acc, curVal) => {
       const district = curVal.Location;
       const year = curVal.TimeFrame;
-      const data = curVal.Data
+      const data = Math.round(curVal.Data*1000)/1000 || 0
+
 
       if (!acc[district]) {
-       acc[district] = { 'location': district, 'yearlyData': {}};
+       acc[district.toUpperCase()] = { 'location': district, 'data': {}};
       }
 
-      acc[district]['yearlyData'][year] = data;
+      acc[district.toUpperCase()]['data'][year] = data;
       return acc;
     }, {});
   }
+
+  findByName(location=''){
+    return this.data[location.toUpperCase()]
+  }
+
 
 
 }
