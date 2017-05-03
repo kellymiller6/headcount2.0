@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Card from './Card';
 
 const Cards = ({ districtData }) => {
     return(
@@ -9,7 +9,11 @@ const Cards = ({ districtData }) => {
         { Object.keys(districtData).map((district, index) => {
           return(
             <div key={index}>
-              { district }
+            // <Card location = {district.Location}
+
+
+            />
+
             </div>
           )
         })}

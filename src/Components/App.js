@@ -3,7 +3,7 @@ import DistrictRepository from '../helper.js';
 import '../App.css';
 import Controls from './Controls';
 import Cards from './Cards';
-
+// import Card from './Card';
 import kinderData from '../../data/kindergartners_in_full_day_program';
 
 
@@ -33,6 +33,7 @@ class App extends Component {
         <h1>Welcome To Headcount 2.0</h1>
         <Controls />
         <Cards districtData={this.state.districtData} />
+        // <Card districtData={this.state.districtData}/>
       </div>
     );
   }
