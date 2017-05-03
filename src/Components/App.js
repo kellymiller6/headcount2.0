@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import DistrictRepository from './helper.js';
-import './App.css';
-import DistrictRepository from '../helper';
+import DistrictRepository from '../helper.js';
+import '../App.css';
 import Controls from './Controls';
 import kinderData from '../../data/kindergartners_in_full_day_program';
 
