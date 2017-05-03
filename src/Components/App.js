@@ -32,7 +32,7 @@ class App extends Component {
       <div>
         <h1>Welcome To Headcount 2.0</h1>
         <Controls />
-        <Cards cards={this.state.districtData} />
+        <Cards districtData={this.state.districtData} />
       </div>
     );
   }

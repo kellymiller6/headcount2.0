@@ -1,13 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 
-export const Cards = ({ cards }) => {
+const Cards = ({ districtData }) => {
     return(
       <div>
         <div>
-          All the data
-          { cards }
+        All the data
+        
         </div>
       </div>
     )
 }
+
+export default Cards;
