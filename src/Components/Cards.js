@@ -6,7 +6,13 @@ const Cards = ({ districtData }) => {
       <div>
         <div>
         All the data
-        
+        { Object.keys(districtData).map((district, index) => {
+          return(
+            <div key={index}>
+              { district }
+            </div>
+          )
+        })}
         </div>
       </div>
     )
