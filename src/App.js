@@ -27,8 +27,8 @@ class App extends Component {
     return (
       <div>
         <div>Welcome To Headcount 2.0</div>
+        <UserData findSchools = {this.findSchools}/>
         <Card />
-        <UserData />
       </div>
     );
   }
