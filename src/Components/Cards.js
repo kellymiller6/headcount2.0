@@ -9,7 +9,7 @@ const Cards = ({ districtData }) => {
         All the data
         { Object.keys(districtData).map((district, index) => {
           return(
-            <div key={index}>
+            <div className='district-card' key={index}>
               <h4> District: { district } </h4>
               <Year years={districtData[district].data}
                />
