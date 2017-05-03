@@ -1,13 +1,12 @@
 import React from 'react';
 
 
-const Card = ({ location, year, yearlydata }) => {
+const Card = ({ location, year }) => {
   return (
     <section>
       <div>
         <h4 >District: { location }</h4>
-        <p > : { year } </p>
-        <p > : { yearlydata }</p>
+        <p > { year } </p>
       </div>
     </section>
   );
