@@ -1,22 +1,18 @@
 import React from 'react';
-import Year from './Year.js'
-
+import Card from './Card.js'
 
 const Cards = ({ districtData }) => {
     return(
       <div>
-        <div>
         All the data
         { Object.keys(districtData).map((district, index) => {
-          return(
-            <div className='district-card' key={index}>
-              <h4> District: { district } </h4>
-              <Year years={districtData[district].data}
-               />
-            </div>
+          return (
+          <div key={index} >
+            <Card district={ district }
+                  data={ districtData[district].data }/>
+          </div>
           )
         })}
-        </div>
       </div>
     )
 }
