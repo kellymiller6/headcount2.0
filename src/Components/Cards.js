@@ -1,5 +1,4 @@
 import React from 'react';
-import Card from './Card.js';
 import Year from './Year.js'
 
 
@@ -11,10 +10,9 @@ const Cards = ({ districtData }) => {
         { Object.keys(districtData).map((district, index) => {
           return(
             <div key={index}>
-              <Card location={ district } />
+              <h4> District: { district } </h4>
               <Year years={districtData[district].data}
                />
-            
             </div>
           )
         })}
