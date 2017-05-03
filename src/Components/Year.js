@@ -1,21 +1,19 @@
 import React from 'react';
-import Card from './Card';
 
 const Year = ({ years }) => {
     return(
-      <div>
         <div>
-        
         { Object.keys(years).map((year, index) => {
+          if( years[year] < 0.5){
           return(
-            <div key={index}>
-              <Card year={year}/>
-
-            </div>
+              <p className='below' key={index}> { year} : {years[year] } </p>
+            )
+          }
+          return(
+            <p className='above' key={index}> { year} : {years[year] } </p>
           )
         })}
         </div>
-      </div>
     )
 }
 
