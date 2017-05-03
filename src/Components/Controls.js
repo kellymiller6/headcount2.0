@@ -14,9 +14,8 @@ export default class Controls extends Component {
     return(
       <div>
         <label>School District</label>
-        <input type='text' value={this.state.district} onChange={ (event) => this.setState({ district: e.target.value }) } />
-        <button onClick={ () => this.//submitfunction()}
-        ></button>
+        <input type='text' value={this.state.district} onChange={ (event) => this.setState({ district: event.target.value }) } />
+        <button>Submit</button>
 
       </div>
     )
