@@ -17,21 +17,32 @@ class App extends Component {
 
   componentDidMount() {
     const district = new DistrictRepository(kinderData)
-    console.log(district.data)
     this.setState({
       districtData: district.data
     })
   }
 
-  // findSchools(userInput){
-  //   this.DistrictRepository.findByName(userInput);
+  submitSearch (district, data) {
+     const district1 = new DistrictRepository(kinderData)
+     let specDistrict = district1.findByName(district)
+     this.setState({
+       districtData: {specDistrict}
+     })
+   }
+
+  // filterDistricts (district, data) {
+  //   const district2 = new DistrictRepository(kinderData)
+  //   let matchDistricts = district2.findAllMatches(district)
+  //   this.setState({
+  //     districtData: {matchDistricts}
+  //   })
   // }
 
   render() {
     return (
       <div>
         <h1>Welcome To Headcount 2.0</h1>
-        <Controls />
+        <Controls handleClick={ this.submitSearch.bind(this) }/>
         <Cards districtData={this.state.districtData} />
       </div>
     );

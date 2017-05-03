@@ -8,7 +8,7 @@ const Cards = ({ districtData }) => {
         { Object.keys(districtData).map((district, index) => {
           return (
           <div key={index} >
-            <Card district={ district }
+            <Card district={ districtData[district].location }
                   data={ districtData[district].data }/>
           </div>
           )
