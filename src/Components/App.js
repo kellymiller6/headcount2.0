@@ -26,8 +26,20 @@ class App extends Component {
     })
   }
 
-  // findSchools(userInput){
-  //   this.DistrictRepository.findByName(userInput);
+  submitSearch (district, data) {
+     const district1 = new DistrictRepository(kinderData)
+     let specDistrict = district1.findByName(district)
+     this.setState({
+       districtData: {specDistrict}
+     })
+   }
+
+  // filterDistricts (district, data) {
+  //   const district2 = new DistrictRepository(kinderData)
+  //   let matchDistricts = district2.findAllMatches(district)
+  //   this.setState({
+  //     districtData: {matchDistricts}
+  //   })
   // }
 
 
