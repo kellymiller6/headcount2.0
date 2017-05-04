@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../styles/controls.css';
 
 export default class Controls extends Component {
   constructor(){
@@ -24,11 +25,11 @@ export default class Controls extends Component {
 
   render(){
     return(
-      <div>
+      <div className='nav-bar'>
         <label>School District</label>
-        <input type='text' className='user-input' value={this.state.district} onChange={(e) => this.allMatches(e) } />
+        <input type='text' className='user-input input' value={this.state.district} onChange={(e) => this.allMatches(e) } />
 
-        <button className='user-input-submit-btn' onClick={ () => {this.findName()} }>Submit</button>
+        <button className='user-input-submit-btn input' onClick={ () => {this.findName()} }>Submit</button>
       </div>
     )
   }
