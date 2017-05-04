@@ -28,7 +28,32 @@ export default class DistrictRepository {
     const keys = Object.keys(this.data).filter(district => {
       return district.includes(searchInput.toUpperCase())
     })
-    console.log(keys)
     return keys
   }
+
+  findAverage(userInput){
+    let district = this.findByName(userInput)
+      const keys = Object.keys(district.data)
+      console.log(keys)
+      let sum = keys.reduce((totalVal, year)=>{
+        totalVal += district.data[year]
+        return totalVal
+      }, 0)
+      let average = Math.round((sum / keys.length)*1000)/1000
+      console.log(average)
+      return average
+
+  }
+
+  compareDistrictAverages(districtA, districtB){
+    const avgDistrictA = this.findAverage(districtA)
+    const avgDistrictB = this.findAverage(districtB)
+    let compared =  Math.round((avgDistrictA/avgDistrictB)*1000)/1000
+    return {
+      [districtA.toUpperCase()]: avgDistrictA,
+      [districtB.toUpperCase()]: avgDistrictB,
+      'compared': compared
+    };
+  }
+
 }
