@@ -15,12 +15,19 @@ export default class Controls extends Component {
      })
    }
 
+  allMatches(e) {
+    const userInput = e.target.value
+    this.setState( {district: userInput}, () => {
+      this.props.handleFilter(this.state.district)
+    })
+  }
+
   render(){
     return(
       <div>
         <label>School District</label>
-        <input type='text' className='user-input' value={this.state.district} onChange={ (event) => this.setState({ district: event.target.value }) } />
-        
+        <input type='text' className='user-input' value={this.state.district} onChange={(e) => this.allMatches(e) } />
+
         <button className='user-input-submit-btn' onClick={ () => {this.findName()} }>Submit</button>
 
       </div>

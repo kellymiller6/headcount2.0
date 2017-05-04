@@ -7,14 +7,15 @@ export default class DistrictRepository {
   duplicateCleaner(data){
     return data.reduce((acc, curVal) => {
       const district = curVal.Location;
+      const upperDistrict = district.toUpperCase()
       const year = curVal.TimeFrame;
       const data = Math.round(curVal.Data*1000)/1000 || 0
 
-      if (!acc[district]) {
-       acc[district.toUpperCase()] = { 'location': district, 'data': {}};
+      if (!acc[upperDistrict]) {
+       acc[upperDistrict] = { 'location': district, 'data': {}};
       }
 
-      acc[district.toUpperCase()]['data'][year] = data;
+      acc[upperDistrict]['data'][year] = data;
       return acc;
     }, {});
   }
@@ -29,7 +30,4 @@ export default class DistrictRepository {
     })
     return keys
   }
-
-
-
 }
