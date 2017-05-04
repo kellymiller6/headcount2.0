@@ -6,19 +6,23 @@ import Cards from './Cards';
 
 import kinderData from '../../data/kindergartners_in_full_day_program';
 
+const district = new DistrictRepository(kinderData)
 
 class App extends Component {
   constructor(){
     super()
     this.state = {
-      districtData: {}
+      districtData: {},
+
     }
   }
 
+
   componentDidMount() {
-    const district = new DistrictRepository(kinderData)
+    console.log(district.data)
     this.setState({
-      districtData: district.data
+      districtData: district.data,
+
     })
   }
 
@@ -38,11 +42,12 @@ class App extends Component {
   //   })
   // }
 
+
   render() {
     return (
       <div>
         <h1>Welcome To Headcount 2.0</h1>
-        <Controls handleClick={ this.submitSearch.bind(this) }/>
+        <Controls handleKeyup={(e)=>district.findAllMatches(e)}  />
         <Cards districtData={this.state.districtData} />
       </div>
     );
