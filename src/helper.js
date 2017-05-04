@@ -42,7 +42,7 @@ export default class DistrictRepository {
       let average = Math.round((sum / keys.length)*1000)/1000
       console.log(average)
       return average
-
+//math.round function 
   }
 
   compareDistrictAverages(districtA, districtB){

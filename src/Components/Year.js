@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/year.css';
 
 const Year = ({ years }) => {
     return(
