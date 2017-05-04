@@ -28,6 +28,7 @@ export default class DistrictRepository {
     const keys = Object.keys(this.data).filter(district => {
       return district.includes(searchInput.toUpperCase())
     })
+    console.log(keys)
     return keys
   }
 }

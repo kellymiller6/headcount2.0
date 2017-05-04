@@ -6,19 +6,23 @@ import Cards from './Cards';
 
 import kinderData from '../../data/kindergartners_in_full_day_program';
 
+const district = new DistrictRepository(kinderData)
 
 class App extends Component {
   constructor(){
     super()
     this.state = {
-      districtData: {}
+      districtData: {},
+
     }
   }
 
+
   componentDidMount() {
-    const district = new DistrictRepository(kinderData)
+    console.log(district.data)
     this.setState({
-      districtData: district.data
+      districtData: district.data,
+
     })
   }
 
@@ -41,6 +45,7 @@ class App extends Component {
     }, {})
     this.setState({ districtData: matches})
   }
+
 
 
 
