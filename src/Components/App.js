@@ -12,24 +12,17 @@ class App extends Component {
   constructor(){
     super()
     this.state = {
-      districtData: {},
+      districtData: {}
 
     }
   }
 
-
   componentDidMount() {
-    console.log(district.data)
     this.setState({
-      districtData: district.data,
+      districtData: district.data
 
     })
   }
-
-  // findSchools(userInput){
-  //   this.DistrictRepository.findByName(userInput);
-  // }
-
 
   render() {
     return (
