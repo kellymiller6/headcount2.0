@@ -3,7 +3,7 @@ import '../styles/year.css';
 
 const Year = ({ years }) => {
     return(
-        <div>
+        <div className='years'>
         { Object.keys(years).map((year, index) => {
           if( years[year] < 0.5){
           return(
