@@ -4,56 +4,44 @@ import  CompareCard  from './CompareCard';
 import '../styles/compareDistricts.css';
 
 const CompareDistricts = ({ repository , compareArray, districtData, handleSelect }) => {
-  let districtA;
-  let districtB;
+  const renderCard = (district) => {
+    return (
+      <Card
+        district={district.location}
+        data={district.data}
+        handleSelect={handleSelect}
+        repository={repository}
+        compareArray={compareArray}
+      />
+    )
+  }
 
-  if(!compareArray.length) {
-    return(
+  if (compareArray.length === 0) {
+    return (
       <div></div>
     )
   } else if (compareArray.length === 1) {
-    districtA = repository.findByName(compareArray[0]);
-    return(
+    const district = repository.findByName(compareArray[0]);
+    return (
       <section className="compare-field">
-        <Card
-          district={districtA.location}
-          data={districtA.data}
-          handleSelect={handleSelect}
-          repository={repository}
-          compareArray={compareArray}
-
-        />
+        {renderCard(district)}
       </section>
     )
   } else if (compareArray.length === 2) {
-    compareArray.forEach(() => {
-      districtA = repository.findByName(compareArray[0]);
-      districtB = repository.findByName(compareArray[1]);
-    })
-
-    return(
+    const districtA = repository.findByName(compareArray[0]);
+    const districtB = repository.findByName(compareArray[1]);
+    return (
       <section className="top-compare">
-        <Card district={districtA.location}
-              data={districtA.data}
-              handleSelect={handleSelect}
-              repository={repository}
-              compareArray={compareArray}
-        />
-
+        {renderCard(districtA)}
         <CompareCard
-              repository={ repository }
-              districtA={districtA.location}
-              districtB={districtB.location}
+          repository={ repository }
+          districtA={districtA.location}
+          districtB={districtB.location}
         />
-
-        <Card district={districtB.location}
-              data={districtB.data}
-              handleSelect={handleSelect}
-              repository={repository}
-              compareArray={compareArray}
-        />
+        {renderCard(districtB)}
       </section>
     )
   }
 }
+
 export default CompareDistricts
