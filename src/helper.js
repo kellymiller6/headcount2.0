@@ -4,13 +4,16 @@ export default class DistrictRepository {
     this.data = this.duplicateCleaner(data)
   }
 
+  numberRounder(input){
+    return Math.round(input*1000)/1000
+  }
+
   duplicateCleaner(data){
     return data.reduce((acc, curVal) => {
       const district = curVal.Location;
       const upperDistrict = district.toUpperCase()
       const year = curVal.TimeFrame;
-      const data = Math.round(curVal.Data*1000)/1000 || 0
-
+      const data = this.numberRounder(curVal.Data) || 0
       if (!acc[upperDistrict]) {
        acc[upperDistrict] = { 'location': district, 'data': {}};
       }
@@ -34,21 +37,20 @@ export default class DistrictRepository {
   findAverage(userInput){
     let district = this.findByName(userInput)
       const keys = Object.keys(district.data)
-      console.log(keys)
+
       let sum = keys.reduce((totalVal, year)=>{
         totalVal += district.data[year]
         return totalVal
       }, 0)
-      let average = Math.round((sum / keys.length)*1000)/1000
-      console.log(average)
+      let average = this.numberRounder(sum/keys.length)
       return average
-//math.round function
+
   }
 
   compareDistrictAverages(districtA, districtB){
     const avgDistrictA = this.findAverage(districtA)
     const avgDistrictB = this.findAverage(districtB)
-    let compared =  Math.round((avgDistrictA/avgDistrictB)*1000)/1000
+    let compared = this.numberRounder(avgDistrictA/avgDistrictB)
     let compareObject = {
       [districtA.toUpperCase()]: avgDistrictA,
       [districtB.toUpperCase()]: avgDistrictB,
@@ -57,17 +59,10 @@ export default class DistrictRepository {
     return compareObject;
   }
 
-  selectionId (location, selected) {
-  if (selected.length === 0) {
-    return ""
-  } else if (selected.length) {
-    let match = selected.find((val) => {
-      return val === location
-    })
+  selectedIndicator(district, selected) {
+    let match = selected.find(val => {return val === district})
     if (match) {
-      return 'is-selected'
+      return 'selected-card'
     }
   }
-}
-
 }
