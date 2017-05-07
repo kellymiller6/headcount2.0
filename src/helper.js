@@ -42,18 +42,32 @@ export default class DistrictRepository {
       let average = Math.round((sum / keys.length)*1000)/1000
       console.log(average)
       return average
-//math.round function 
+//math.round function
   }
 
   compareDistrictAverages(districtA, districtB){
     const avgDistrictA = this.findAverage(districtA)
     const avgDistrictB = this.findAverage(districtB)
     let compared =  Math.round((avgDistrictA/avgDistrictB)*1000)/1000
-    return {
+    let compareObject = {
       [districtA.toUpperCase()]: avgDistrictA,
       [districtB.toUpperCase()]: avgDistrictB,
       'compared': compared
     };
+    return compareObject;
   }
+
+  selectionId (location, selected) {
+  if (selected.length === 0) {
+    return ""
+  } else if (selected.length) {
+    let match = selected.find((val) => {
+      return val === location
+    })
+    if (match) {
+      return 'is-selected'
+    }
+  }
+}
 
 }

@@ -1,0 +1,10 @@
+.top-compare{
+  display: flex;
+}
+
+.compared-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: space-around;
+}
