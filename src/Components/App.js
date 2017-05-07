@@ -1,58 +1,79 @@
-import React, { Component } from 'react';
-import DistrictRepository from '../helper.js';
-import '../styles/App.css';
-import Controls from './Controls';
-import Cards from './Cards';
+import React, { Component } from "react";
+import DistrictRepository from "../helper.js";
+import "../styles/App.css";
+import Controls from "./Controls";
+import Cards from "./Cards";
 
-import kinderData from '../../data/kindergartners_in_full_day_program';
+import kinderData from "../../data/kindergartners_in_full_day_program";
 
-const district = new DistrictRepository(kinderData)
+const district = new DistrictRepository(kinderData);
 
 class App extends Component {
-  constructor(){
-    super()
+  constructor() {
+    super();
     this.state = {
       districtData: {},
+      selectedDistrict1: null,
+      selectedDistrict2: null
       //comparedDistricts: []
-    }
+    };
   }
 
   componentWillMount() {
     this.setState({
-      districtData: district.data,
-    })
+      districtData: district.data
+    });
   }
   //componentWillMount
-  submitSearch (district, data) {
-    const district1 = new DistrictRepository(kinderData)
-    let specDistrict = district1.findByName(district)
+  submitSearch(district, data) {
+    const district1 = new DistrictRepository(kinderData);
+    let specDistrict = district1.findByName(district);
     this.setState({
-      districtData: {specDistrict}
-    })
-   }
+      districtData: { specDistrict }
+    });
+  }
 
-  filterDistricts (input) {
-    const district2 = new DistrictRepository(kinderData)
-    let matchDistricts = district2.findAllMatches(input)
+  filterDistricts(input) {
+    const district2 = new DistrictRepository(kinderData);
+    let matchDistricts = district2.findAllMatches(input);
 
     let matches = matchDistricts.reduce((acc, key) => {
       if (!acc[key]) {
-        acc[key] = district2.data[key]
+        acc[key] = district2.data[key];
       }
-      return acc
-    }, {})
+      return acc;
+    }, {});
 
-    this.setState({ districtData: matches})
+    this.setState({ districtData: matches });
+  }
+
+  selectDistrict(district){
+    const district1 = new DistrictRepository(kinderData);
+    // this.setState(
+    //   {
+    //     selectedDistrict1: district1.findByName(district)
+    //
+    //   }
+    // )
+
+
   }
 
   render() {
-    console.log('tim')
+    console.log("tim");
     return (
-      <div className='app'>
+      <div className="app">
         <h1>Welcome To Headcount 2.0</h1>
-        <Controls handleClick={ this.submitSearch.bind(this) }
-                  handleFilter={ this.filterDistricts.bind(this) }/>
-        <Cards districtData={this.state.districtData} />
+        <Controls
+          handleClick={this.submitSearch.bind(this)}
+          handleFilter={this.filterDistricts.bind(this)}
+        />
+        <Cards
+          districtData={this.state.districtData}
+          selectedDistrict1={this.state.selectedDistrict1}
+          selectDistrict={this.selectDistrict.bind(this)}
+
+        />
       </div>
     );
   }
