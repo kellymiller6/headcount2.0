@@ -2,57 +2,87 @@ import React, { Component } from 'react';
 import DistrictRepository from '../helper.js';
 import '../styles/App.css';
 import Controls from './Controls';
-import Cards from './Cards';
+import  Cards  from './Cards';
+import CompareDistricts from './CompareDistricts';
 
 import kinderData from '../../data/kindergartners_in_full_day_program';
 
-const district = new DistrictRepository(kinderData)
 
 class App extends Component {
   constructor(){
     super()
+    this.repository = new DistrictRepository(kinderData)
     this.state = {
       districtData: {},
-      //comparedDistricts: []
+      compareArray: []
     }
   }
 
   componentWillMount() {
     this.setState({
-      districtData: district.data,
+      districtData: this.repository.data,
     })
   }
-  //componentWillMount
+
   submitSearch (district, data) {
-    const district1 = new DistrictRepository(kinderData)
-    let specDistrict = district1.findByName(district)
+    let specDistrict = this.repository.findByName(district);
     this.setState({
       districtData: {specDistrict}
     })
    }
 
   filterDistricts (input) {
-    const district2 = new DistrictRepository(kinderData)
-    let matchDistricts = district2.findAllMatches(input)
-
-    let matches = matchDistricts.reduce((acc, key) => {
-      if (!acc[key]) {
-        acc[key] = district2.data[key]
+    let matchDistricts = this.repository.findAllMatches(input);
+    let matches = matchDistricts.reduce((allMatches, match) => {
+      if (!allMatches[match]) {
+        allMatches[match] = this.repository.data[match]
       }
-      return acc
+      return allMatches;
     }, {})
+    this.setState({ districtData: matches});
+  }
 
-    this.setState({ districtData: matches})
+
+  selectCard(district) {
+    const newCompareArray = [...this.state.compareArray];
+    if (newCompareArray.includes(district)) {
+      const index = newCompareArray.indexOf(district);
+      newCompareArray.splice(index, 1);
+    } else {
+      if (newCompareArray.length <= 1) {
+        newCompareArray.push(district);
+      } else if (newCompareArray.length > 1) {
+        newCompareArray.shift();
+        newCompareArray.push(district);
+      }
+    }
+    this.setState({compareArray: newCompareArray});
   }
 
   render() {
-    console.log('tim')
     return (
       <div className='app'>
         <h1>Welcome To Headcount 2.0</h1>
-        <Controls handleClick={ this.submitSearch.bind(this) }
-                  handleFilter={ this.filterDistricts.bind(this) }/>
-        <Cards districtData={this.state.districtData} />
+
+        <CompareDistricts
+          repository={this.repository}
+          compareArray={this.state.compareArray}
+          districtData={this.state.districtData}
+          handleSelect={this.selectCard.bind(this)}
+        />
+
+        <Controls
+          handleClick={ this.submitSearch.bind(this) }
+          handleFilter={ this.filterDistricts.bind(this) }
+        />
+
+        <Cards
+          districtData={this.state.districtData}
+          handleSelect={this.selectCard.bind(this)}
+          repository={this.repository}
+          compareArray={this.state.compareArray}
+        />
+        
       </div>
     );
   }

@@ -17,7 +17,7 @@ export default class Controls extends Component {
    }
 
   allMatches(e) {
-    const userInput = e.target.value
+    const userInput = e.target.value;
     this.setState( {district: userInput}, () => {
       this.props.handleFilter(this.state.district)
     })
