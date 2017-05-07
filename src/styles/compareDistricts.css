@@ -8,3 +8,7 @@
   justify-content: space-around;
   align-content: space-around;
 }
+
+.selected-card{
+  background-color: aqua;
+}

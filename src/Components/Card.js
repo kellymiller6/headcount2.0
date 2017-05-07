@@ -3,10 +3,10 @@ import Year from './Year.js'
 import '../styles/card.css';
 
 const Card = ({ district, data, handleSelect, repository, compareArray }) => {
-  let cssClass = repository.selectionId(district, compareArray);
+  let cssSelectedCardClass = repository.selectedIndicator(district, compareArray);
     return(
       <div id={location}
-              className={`district-card ${cssClass}`}
+              className={`district-card ${cssSelectedCardClass}`}
               onClick={() => { handleSelect(district) } }>
         <h4> { district } </h4>
         <Year years={ data } />
