@@ -57,7 +57,7 @@ class App extends Component {
       }
     }
     this.setState({compareArray: newCompareArray});
-    }
+  }
 
   render() {
     return (
@@ -71,13 +71,18 @@ class App extends Component {
           handleSelect={this.selectCard.bind(this)}
         />
 
-        <Controls handleClick={ this.submitSearch.bind(this) }
-                  handleFilter={ this.filterDistricts.bind(this) }/>
+        <Controls
+          handleClick={ this.submitSearch.bind(this) }
+          handleFilter={ this.filterDistricts.bind(this) }
+        />
 
-        <Cards districtData={this.state.districtData}
-                handleSelect={this.selectCard.bind(this)}
-                  repository={this.repository}
-                  compareArray={this.state.compareArray}/>
+        <Cards
+          districtData={this.state.districtData}
+          handleSelect={this.selectCard.bind(this)}
+          repository={this.repository}
+          compareArray={this.state.compareArray}
+        />
+        
       </div>
     );
   }
