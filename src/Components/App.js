@@ -42,25 +42,22 @@ class App extends Component {
     this.setState({ districtData: matches});
   }
 
+
   selectCard(district) {
-    if (!this.state.compareArray.length) {
-      this.state.compareArray.push(district);
-      return this.setState( {compareArray: this.state.compareArray});
-
-    } else if (this.state.compareArray.length < 2 && !this.state.compareArray.includes(district)) {
-      this.state.compareArray.push(district);
-      return this.setState( {compareArray: this.state.compareArray});
-
-    } else if (this.state.compareArray.length < 3 && this.state.compareArray.includes(district)) {
-      let result = this.state.compareArray.filter(val => {
-        return district !== val
-      });
-    return this.setState( {compareArray: result} );
+    const newCompareArray = [...this.state.compareArray];
+    if (newCompareArray.includes(district)) {
+      const index = newCompareArray.indexOf(district);
+      newCompareArray.splice(index, 1);
+    } else {
+      if (newCompareArray.length <= 1) {
+        newCompareArray.push(district);
+      } else if (newCompareArray.length > 1) {
+        newCompareArray.shift();
+        newCompareArray.push(district);
+      }
     }
-    this.state.compareArray.shift();
-    this.state.compareArray.push(district);
-    return this.setState( {compareArray: this.state.compareArray});
-  }
+    this.setState({compareArray: newCompareArray});
+    }
 
   render() {
     return (
