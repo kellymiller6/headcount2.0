@@ -1,6 +1,7 @@
 import React from 'react';
 import  Card  from './Card.js'
 import '../styles/cards.css';
+const { object } = React.PropTypes
 
 const Cards = ({ districtData, repository, handleSelect, compareArray }) => {
     return(
@@ -18,6 +19,11 @@ const Cards = ({ districtData, repository, handleSelect, compareArray }) => {
         })}
       </div>
     )
+}
+
+
+Cards.propTypes = {
+  districtData: object.isRequired
 }
 
 export default Cards;
