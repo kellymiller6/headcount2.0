@@ -26,3 +26,46 @@ describe('Card shallow mount tests', () => {
   });
 
 });
+
+describe('App --> mount', () => {
+  let wrapperMount
+
+  beforeEach(() => {
+    wrapperMount = mount(<App />)
+    const repo = new DistrictRepository(kinderData)
+
+  })
+
+  it('should display the correct number of cards based on data in state', () => {
+    const repo = new DistrictRepository(kinderData)
+    const foundCards = wrapperMount.find('.district-card')
+
+    expect(foundCards.length).toEqual(181)
+  })
+
+  it('should display the compare card area after clicking on card', () => {
+    const repo = new DistrictRepository(kinderData)
+    const cardOne = wrapperMount.find('.district-card').first()
+    const expectedState = { districtData: repo.data, compareArray: ['Colorado']}
+
+    cardOne.simulate('click')
+
+    expect(wrapperMount.state()).toEqual(expectedState)
+    expect(wrapperMount.find('.top-compare').length).toEqual(1)
+  })
+
+  it('clicking on two cards will create comparison selection with new comparitive card', () => {
+    const repo = new DistrictRepository(kinderData)
+    const cardOne = wrapperMount.find('.district-card').first()
+    const cardTwo = wrapperMount.find('.district-card').last()
+    const expectedState = { districtData: repo.data, compareArray: ['Colorado', 'YUMA SCHOOL DISTRICT 1']}
+
+    cardOne.simulate('click')
+    cardTwo.simulate('click')
+
+    expect(wrapperMount.state()).toEqual(expectedState)
+    expect(wrapperMount.find('.top-compare').length).toEqual(1)
+    expect(wrapperMount.find('.compared').length).toEqual(1)
+
+  })
+})
