@@ -1,24 +1,22 @@
-import React from 'react';
-import { shallow, mount } from 'enzyme';
-import Card from '../Components/Card.js'
-import Cards from '../Components/Cards.js'
-import DistrictRepository from '../helper.js';
-import kinderData from '../../data/kindergartners_in_full_day_program';
+import React from "react";
+import { shallow, mount } from "enzyme";
+import Card from "../Components/Card.js";
+import Cards from "../Components/Cards.js";
+import DistrictRepository from "../helper.js";
+import kinderData from "../../data/kindergartners_in_full_day_program";
 
-describe('Cards',()=>{
-  const districtData = new DistrictRepository(kinderData)
-  const wrapper = shallow(
-        <Card district={ districtData[district].location }
-            data={ districtData[district].data }/>)
+describe("Cards", () => {
+  const repository = new DistrictRepository(kinderData);
 
-    it('has a card-container class field', ()=>{
-      expect(wrapper.is('.card-container')).toEqual(true)
+  it("has class card-container", () => {
+    const wrapper = shallow(<Cards districtData={repository.data} />);
+    expect(wrapper.find(".card-container").length).toEqual(1);
+  });
 
-    });
+  it("has class card-container", () => {
+    const wrapper = mount(<Cards districtData={repository.data} />);
+    expect(wrapper.find(".card-container").length).to(1);
+  });
 
-    it('on initiation has multiple card class fields', ()=>{
-        const wrapper = mount(<Cards cards={[{title:'title', body:'body'},{title:'title', body:'body'} ]}/>)
-        expect(wrapper.find('.district-card').length).toBeGreaterThan(1)
-      });
 
-    })
+});
