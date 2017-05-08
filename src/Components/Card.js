@@ -7,7 +7,7 @@ const Card = ({ district, data, handleSelect, repository, compareArray }) => {
     return(
       <div id={location}
               className={`district-card ${cssSelectedCardClass}`}
-              onClick={() => { handleSelect(district) } }>
+              onClick={() => handleSelect(district) }>
         <h4 className='district-name'> { district } </h4>
         <Year years={ data } />
       </div>

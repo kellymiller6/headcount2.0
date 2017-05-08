@@ -29,7 +29,7 @@ class App extends Component {
     this.setState({
       districtData: {specDistrict}
     })
-   }
+  }
 
   filterDistricts (input) {
     let matchDistricts = this.repository.findAllMatches(input);
@@ -82,7 +82,7 @@ class App extends Component {
           repository={this.repository}
           compareArray={this.state.compareArray}
         />
-        
+
       </div>
     );
   }

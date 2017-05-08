@@ -36,17 +36,4 @@ describe('Compare districts', () => {
     expect(wrapper.find(CompareCard).length).toEqual(1);
   });
 
-  it.skip('fires a handleSelect function onClick of the div that gives the card a class of selected-card', () => {
-    const wrapper = mount(<CompareDistricts  districtData={repository.data} handleSelect={mockHandleSelect} repository={repository} compareArray={['Colorado', 'ACADEMY 20']} />)
-    console.log(wrapper.debug())
-    const card = wrapper.find('CHERRY CREEK 5')
-    console.log('card', card)
-    console.log('before click', wrapper.debug())
-    card.simulate('click')
-    console.log('after click', wrapper.debug())
-    expect(wrapper.find('.selected-card').length).toEqual(1)
-    expect(mockHandleSelect).toHaveBeenCalledTimes(1)
-  })
-
-
 });
