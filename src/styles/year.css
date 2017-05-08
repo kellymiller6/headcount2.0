@@ -1,7 +1,13 @@
 .below{
-  color: red;
+  font-family: times-new-roman;
+  font-size: 25px;
+  font-weight: bolder;
+  color: #C86800;
 }
 
 .above{
-  color: green;
+  font-family: times-new-roman;
+  font-size: 25px;
+  font-weight: bolder;
+  color: #C8AE00;
 }
