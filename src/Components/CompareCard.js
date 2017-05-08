@@ -1,6 +1,7 @@
 import React from 'react'
 import '../styles/compareDistricts.css';
 import '../styles/card.css';
+import PropTypes from 'prop-types';
 
 const CompareCard = ({ repository, districtA, districtB }) => {
   let compareObject = repository.compareDistrictAverages(districtA, districtB);
@@ -15,5 +16,12 @@ const CompareCard = ({ repository, districtA, districtB }) => {
     </article>
   )
 }
+
+CompareCard.propTypes = {
+  repository: PropTypes.object,
+  districtB: PropTypes.string,
+  districtA: PropTypes.string
+};
+
 
 export default CompareCard

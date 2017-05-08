@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/controls.css';
+import PropTypes from 'prop-types'
 
 export default class Controls extends Component {
   constructor(){
@@ -35,3 +36,8 @@ export default class Controls extends Component {
   }
 
 }
+
+Controls.propTypes = {
+  handleClick: PropTypes.func,
+  handleFilter: PropTypes.func
+};

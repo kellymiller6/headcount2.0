@@ -32,12 +32,9 @@ describe('App --> mount', () => {
 
   beforeEach(() => {
     wrapperMount = mount(<App />)
-    const repo = new DistrictRepository(kinderData)
-
   })
 
   it('should display the correct number of cards based on data in state', () => {
-    const repo = new DistrictRepository(kinderData)
     const foundCards = wrapperMount.find('.district-card')
 
     expect(foundCards.length).toEqual(181)

@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/year.css';
+import PropTypes from 'prop-types';
 
 const Year = ({ years }) => {
     return(
@@ -17,5 +18,9 @@ const Year = ({ years }) => {
         </div>
     )
 }
+
+Year.propTypes = {
+  years: PropTypes.object
+};
 
 export default Year;

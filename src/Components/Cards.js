@@ -1,7 +1,7 @@
 import React from 'react';
 import  Card  from './Card.js'
 import '../styles/cards.css';
-const { object } = React.PropTypes
+import PropTypes from 'prop-types';
 
 const Cards = ({ districtData, repository, handleSelect, compareArray }) => {
     return(
@@ -21,9 +21,11 @@ const Cards = ({ districtData, repository, handleSelect, compareArray }) => {
     )
 }
 
-
 Cards.propTypes = {
-  districtData: object.isRequired
-}
+  district: PropTypes.string,
+  handleSelect: PropTypes.func,
+  repository: PropTypes.object,
+  compareArray: PropTypes.array
+};
 
 export default Cards;

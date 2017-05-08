@@ -2,6 +2,7 @@ import React from 'react';
 import  Card  from './Card.js';
 import  CompareCard  from './CompareCard';
 import '../styles/compareDistricts.css';
+import PropTypes from 'prop-types';
 
 const CompareDistricts = ({ repository , compareArray, districtData, handleSelect }) => {
   const renderCard = (district) => {
@@ -43,5 +44,12 @@ const CompareDistricts = ({ repository , compareArray, districtData, handleSelec
     )
   }
 }
+
+CompareDistricts.propTypes = {
+  districtData: PropTypes.object,
+  handleSelect: PropTypes.func,
+  repository: PropTypes.object,
+  compareArray: PropTypes.array
+};
 
 export default CompareDistricts
