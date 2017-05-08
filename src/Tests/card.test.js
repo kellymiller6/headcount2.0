@@ -10,7 +10,7 @@ describe('Card shallow mount tests', () => {
   const repository = new DistrictRepository(kinderData)
   const mockHandleSelect= jest.fn()
   let years = {2004: 1}
-
+  
   beforeEach(() => {
     wrapper = shallow(<Card district={'Colorado'} data={years} handleSelect={mockHandleSelect} repository={repository} compareArray={[]} />)
   })
@@ -55,5 +55,4 @@ describe('Card mount tests', () => {
     expect(card.hasClass('selected-card')).toBe(false)
 
   })
-
 })

@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
+
 import Card from '../Components/Card.js';
 import Year from '../Components/Year.js';
 import kinderData from '../../data/kindergartners_in_full_day_program.js';
