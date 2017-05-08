@@ -43,7 +43,7 @@ describe('Card mount tests', () => {
     expect(card.hasClass('selected-card')).toBe(true)
 
     card.simulate('click')
-
+    expect(wrapper.find('.selected-card').length).toEqual(1)
     expect(mockHandleSelect).toHaveBeenCalledTimes(1)
   })
 
@@ -53,6 +53,7 @@ describe('Card mount tests', () => {
 
     expect(card.hasClass('district-card')).toBe(true)
     expect(card.hasClass('selected-card')).toBe(false)
+
   })
 
 })

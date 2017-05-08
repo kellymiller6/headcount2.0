@@ -23,7 +23,7 @@ const CompareDistricts = ({ repository , compareArray, districtData, handleSelec
   } else if (compareArray.length === 1) {
     const district = repository.findByName(compareArray[0]);
     return (
-      <section className="compare-field">
+      <section className="top-compare">
         {renderCard(district)}
       </section>
     )
