@@ -1,7 +1,7 @@
 import React from 'react';
 import Year from './Year.js'
 import '../styles/card.css';
-const { object } = React.PropTypes;
+import PropTypes from 'prop-types';
 
 const Card = ({ district, data, handleSelect, repository, compareArray }) => {
   let cssSelectedCardClass = repository.selectedIndicator(district, compareArray);
@@ -17,7 +17,11 @@ const Card = ({ district, data, handleSelect, repository, compareArray }) => {
 
 
 Card.propTypes = {
-  data: object.isRequired
-}
+  district: PropTypes.string,
+  data: PropTypes.object,
+  handleSelect: PropTypes.func,
+  repository: PropTypes.object,
+  compareArray: PropTypes.array
+};
 
 export default Card;
