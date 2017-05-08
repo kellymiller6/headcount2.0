@@ -20,7 +20,7 @@ describe('Card shallow mount tests', () => {
     const expectedState = {
       districtData: repository.data,
       compareArray: []
-  };
+    };
 
   expect(wrapper.state()).toEqual(expectedState);
   });

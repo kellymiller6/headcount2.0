@@ -35,7 +35,7 @@ describe('Controls', () => {
       district: 'Colorado',
     };
     input.simulate('change', { target: { value: 'Colorado' } });
-
+    expect(mockedFilter).toHaveBeenCalledTimes(1)
     expect(input.node.value).toEqual('Colorado');
     expect(wrapper.state()).toEqual(expectedState);
   });
@@ -47,6 +47,25 @@ describe('Controls', () => {
     );
 
     expect(wrapper.find('button').length).toEqual(1);
+  });
+
+  it('fires submitIdea function with the data from state as an argument, and input fields go back to empty strings', () => {
+    const mockedSubmit = jest.fn();
+    const mockedFilter = jest.fn();
+
+    const wrapper = mount(
+      <Controls handleClick={mockedSubmit}
+                handleFilter={mockedFilter}/>
+    );
+    const expectedStateAfterChange = {
+      district: 'COLORADO'
+    };
+
+    const input = wrapper.find('input');
+    input.simulate('change', { target: { value: 'COLORADO' } });
+
+    expect(wrapper.state()).toEqual(expectedStateAfterChange);
+    expect(mockedFilter).toHaveBeenCalledTimes(1);
   });
 
   it('fires handleClick function with the data from state as an argument, and input fields go back to empty strings', () => {
@@ -74,24 +93,5 @@ describe('Controls', () => {
     expect(input.node.value).toEqual('');
     expect(mockedSubmit).toHaveBeenCalledTimes(1);
     expect(mockedSubmit).toHaveBeenCalledWith('Adams')
-  });
-
-  it('fires submitIdea function with the data from state as an argument, and input fields go back to empty strings', () => {
-    const mockedSubmit = jest.fn();
-    const mockedFilter = jest.fn();
-
-    const wrapper = mount(
-      <Controls handleClick={mockedSubmit}
-                handleFilter={mockedFilter}/>
-    );
-    const expectedStateAfterChange = {
-      district: 'COLORADO'
-    };
-
-    const input = wrapper.find('input');
-    input.simulate('change', { target: { value: 'COLORADO' } });
-
-    expect(wrapper.state()).toEqual(expectedStateAfterChange);
-    expect(mockedFilter).toHaveBeenCalledTimes(1);
   });
 });

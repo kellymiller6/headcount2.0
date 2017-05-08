@@ -9,15 +9,10 @@ describe("Cards", () => {
   const repository = new DistrictRepository(kinderData);
 
   it("has class card-container", () => {
-    const wrapper = shallow(<Cards districtData={repository.data} />);
+    const wrapper = shallow(<Cards districtData={repository.data}/>);
     expect(wrapper.find(".card-container").length).toEqual(1);
   });
 
-  it("has class card-container", () => {
-    const wrapper = mount(<Cards districtData={repository.data} />);
-    expect(wrapper.find(".card-container").length).to(1);
-  });
-  
   it('should have 181 cards with class district card', () => {
     const wrapper = mount(<Cards districtData={repository.data} repository={repository} compareArray={[]}/>)
     expect(wrapper.find('.district-card').length).toEqual(181)
