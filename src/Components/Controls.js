@@ -26,7 +26,7 @@ export default class Controls extends Component {
   render(){
     return(
       <div className='nav-bar'>
-        <label>School District</label>
+        <label className='input'>School District</label>
         <input type='text' className='user-input input' value={this.state.district} onChange={(e) => this.allMatches(e) } />
 
         <button className='user-input-submit-btn input' onClick={ () => {this.findName()} }>Submit</button>

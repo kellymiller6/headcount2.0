@@ -1,7 +1,9 @@
+body{
+  font-family: 'Open Sans', sans-serif;
+}
 .app{
   text-align: center;
   background-color: #171F47;
-
 }
 
 h1{
@@ -13,7 +15,12 @@ label{
 }
 
 .user-input-submit-btn{
+  font-family: 'Open Sans', sans-serif;
+}
 
+.input{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
 }
 
 .district-name {
